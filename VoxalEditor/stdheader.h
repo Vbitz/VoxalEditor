@@ -2,8 +2,8 @@
 //  stdheader.h
 //  VoxalEditor
 //
-//  Created by Joshua Scarsbrook on 9/02/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Vbitz on 9/02/12.
+//  Copyright (c) 2012 Vbitz. All rights reserved.
 //
 
 #ifndef VoxalEditor_stdheader_h
