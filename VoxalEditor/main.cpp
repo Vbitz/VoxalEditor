@@ -33,22 +33,24 @@ void RenderScene()
 
 void SetMatrix()
 {
-    openGL::glMatrixMode(GL_PROJECTION_MATRIX);
+    openGL::glMatrixMode(GL_PROJECTION);
     openGL::glLoadIdentity();
-    openGL::gluPerspective(35, width / (float) height, .1f, 50);
+    openGL::gluPerspective(35, width / height, .1f, 50);
     
     // modelview matrix
     openGL::glMatrixMode(GL_MODELVIEW);
     openGL::glLoadIdentity();
     openGL::gluLookAt(
-                      .8, .8, .8,
+                      -3, -3, -3,
                       0, 0, 0,
-                      0, 1, 0);
+                      0, 0, -1);
 }
 
 void SetupRC()
 {
     openGL::glClearColor(0.01, 0.01, 0.01, 1.0);
+    
+    openGL::glEnable(GL_DEPTH_TEST);
     
     SetMatrix();
 }

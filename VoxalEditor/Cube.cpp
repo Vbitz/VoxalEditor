@@ -45,6 +45,8 @@ void CubeSide::Draw()
 {
     if (!Enabled) return;
     
+    int cubeSize = 16;
+    
     //openGL::glColor3i(125, 0, 0);
     
     openGL::glColor4f(R, G, B, 255);
@@ -79,12 +81,12 @@ void CubeSide::Draw()
 
 Cube::Cube(int x, int y, int z)
 {
-    topSide = CubeSide(x, y, z, x + 1, y + 1, z, 125, 0, 0);
-    bottomSide = CubeSide(x, y, z + 1, x + 1, y + 1, z + 1, 0, 125, 0);
-    frontSide = CubeSide(x, y, z, x, y + 1, z + 1, 0, 0, 125);
-    backSide = CubeSide(x + 1, y, z, x + 1, y + 1, z + 1 , 0, 0, 255);
-    leftSide = CubeSide(x, y, z, x + 1, y, z + 1, 0, 255, 0);
-    rightSide = CubeSide(x, y + 1, z, x + 1, y + 1, z + 1, 255, 0, 0);
+    topSide = CubeSide(x, y, z, x + 1, y + 1, z, 125, 0, 0); // red
+    bottomSide = CubeSide(x + 1, y + 1, z + 1, x, y, z + 1, 0, 125, 0); // green
+    frontSide = CubeSide(x, y, z, x, y + 1, z + 1, 0, 0, 125); // blue
+    backSide = CubeSide(x + 1, y, z, x + 1, y + 1, z + 1 , 125, 125, 0); // yellow
+    leftSide = CubeSide(x, y, z, x + 1, y, z + 1, 125, 0, 125); // purple
+    rightSide = CubeSide(x, y + 1, z, x + 1, y + 1, z + 1, 0, 125, 125); // cyan
 }
 
 void Cube::Draw()
