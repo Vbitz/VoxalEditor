@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		42573EFA14E35F1600318862 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42573EF914E35F1600318862 /* main.cpp */; };
 		42573EFC14E35F1600318862 /* VoxalEditor.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 42573EFB14E35F1600318862 /* VoxalEditor.1 */; };
+		42573F0314E3619C00318862 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42573F0214E3619C00318862 /* GLUT.framework */; };
+		42573F0514E361A900318862 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42573F0414E361A900318862 /* OpenGL.framework */; };
+		42573F0A14E366F900318862 /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42573F0914E366F900318862 /* Cube.cpp */; };
+		42573F0D14E367C900318862 /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42573F0C14E367C900318862 /* Drawable.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +32,14 @@
 		42573EF514E35F1600318862 /* VoxalEditor */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = VoxalEditor; sourceTree = BUILT_PRODUCTS_DIR; };
 		42573EF914E35F1600318862 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		42573EFB14E35F1600318862 /* VoxalEditor.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = VoxalEditor.1; sourceTree = "<group>"; };
+		42573F0214E3619C00318862 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		42573F0414E361A900318862 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		42573F0614E3639A00318862 /* stdheader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdheader.h; sourceTree = "<group>"; };
+		42573F0714E3641E00318862 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		42573F0814E366F400318862 /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
+		42573F0914E366F900318862 /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
+		42573F0B14E367C100318862 /* Drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
+		42573F0C14E367C900318862 /* Drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Drawable.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42573F0514E361A900318862 /* OpenGL.framework in Frameworks */,
+				42573F0314E3619C00318862 /* GLUT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +58,8 @@
 		42573EEA14E35F1600318862 = {
 			isa = PBXGroup;
 			children = (
+				42573F0414E361A900318862 /* OpenGL.framework */,
+				42573F0214E3619C00318862 /* GLUT.framework */,
 				42573EF814E35F1600318862 /* VoxalEditor */,
 				42573EF614E35F1600318862 /* Products */,
 			);
@@ -61,6 +77,12 @@
 			isa = PBXGroup;
 			children = (
 				42573EF914E35F1600318862 /* main.cpp */,
+				42573F0714E3641E00318862 /* main.h */,
+				42573F0914E366F900318862 /* Cube.cpp */,
+				42573F0814E366F400318862 /* Cube.h */,
+				42573F0B14E367C100318862 /* Drawable.h */,
+				42573F0C14E367C900318862 /* Drawable.cpp */,
+				42573F0614E3639A00318862 /* stdheader.h */,
 				42573EFB14E35F1600318862 /* VoxalEditor.1 */,
 			);
 			path = VoxalEditor;
@@ -117,6 +139,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				42573EFA14E35F1600318862 /* main.cpp in Sources */,
+				42573F0A14E366F900318862 /* Cube.cpp in Sources */,
+				42573F0D14E367C900318862 /* Drawable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
