@@ -43,11 +43,6 @@ void CubeSide::SetEnabled(bool s)
 
 void CubeSide::Draw()
 {
-    if (!Enabled) return;
-    
-    int cubeSize = 16;
-    
-    //openGL::glColor3i(125, 0, 0);
     
     openGL::glColor4f(R, G, B, 255);
     
@@ -82,6 +77,11 @@ void CubeSide::Draw()
 Cube::Cube()
 {
     Drawing = false;
+}
+
+void Cube::SetDrawing(bool s)
+{
+    Drawing = s;
 }
 
 Cube::Cube(int x, int y, int z)

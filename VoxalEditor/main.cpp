@@ -11,9 +11,15 @@
 
 Cube testingCube(0,0,0);
 
-Cube Cubes[8][8][8];
+const int worldSize = 192;
+
+Cube Cubes[worldSize][worldSize][worldSize];
 
 int width = 800, height = 600;
+
+bool needsRebuild = true;
+
+//std::vector<vector3f> 
 
 void ChangeSize(int w, int h)
 {
@@ -24,13 +30,23 @@ void ChangeSize(int w, int h)
     SetMatrix();
 }
 
+void RebuildScene()
+{
+    needsRebuild = false;
+}
+
 void RenderScene()
 {
     openGL::glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     
-    for (int z = 0; z < 8; z++) {
-        for (int x = 0; x < 8; x++) {
-            for (int y = 0; y < 8; y++) {
+    if (needsRebuild)
+    {
+        RebuildScene();
+    }
+    
+    for (int z = 0; z < worldSize; z++) {
+        for (int x = 0; x < worldSize; x++) {
+            for (int y = 0; y < worldSize; y++) {
                 Cubes[x][y][z].Draw();
             }
         }
@@ -43,13 +59,13 @@ void SetMatrix()
 {
     openGL::glMatrixMode(GL_PROJECTION);
     openGL::glLoadIdentity();
-    openGL::gluPerspective(35, width / height, .1f, 50);
+    openGL::gluPerspective(35, 1.3, .1f, 600);
     
     // modelview matrix
     openGL::glMatrixMode(GL_MODELVIEW);
     openGL::glLoadIdentity();
     openGL::gluLookAt(
-                      -10, -10, -8,
+                      -200, -200, -8,
                       0, 0, 0,
                       0, 0, -1);
 }
@@ -60,10 +76,13 @@ void SetupRC()
     
     openGL::glEnable(GL_DEPTH_TEST);
     
-    for (int z = 0; z < 8; z++) {
-        for (int x = 0; x < 8; x++) {
-            for (int y = 0; y < 8; y++) {
-                Cubes[x][y][z] = Cube(x - 4, y - 4, z - 4);
+    for (int z = 0; z < worldSize; z++) {
+        for (int x = 0; x < worldSize; x++) {
+            for (int y = 0; y < worldSize; y++) {
+                Cubes[x][y][z] = Cube(x - worldSize / 2, y - worldSize / 2, z - worldSize / 2);
+                if ((rand() % 64) > 0) {
+                    Cubes[x][y][z].SetDrawing(false);
+                }
             }
         }
     }
@@ -73,6 +92,8 @@ void SetupRC()
 
 int main (int argc, char * argv[])
 {
+    srand(time(0));
+    
     openGL::glutInit(&argc, argv);
     openGL::glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_STENCIL);
     

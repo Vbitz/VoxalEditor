@@ -45,6 +45,8 @@ public:
     Cube();
     Cube(int x, int y, int z);
     
+    void SetDrawing(bool s);
+    
     void Draw();
 };
 

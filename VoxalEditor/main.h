@@ -12,6 +12,7 @@
 #include "Cube.h"
 
 void ChangeSize(int w, int h);
+void RebuildScene();
 void RenderScene();
 void SetMatrix();
 void SetupRC();

@@ -15,9 +15,27 @@ struct vector3f{
     float Z;
 };
 
+#include <sys/types.h>
+#include <sys/cdefs.h>
+#include <stddef.h>
+#include <_types.h>
+
 namespace openGL
 {
 #include <GLUT/GLUT.h>
+}
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+namespace cHelpers
+{
+    extern "C"
+    {
+        #include <time.h>
+        #include <stdlib.h>
+    }
 }
 
 #endif
