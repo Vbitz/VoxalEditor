@@ -11,19 +11,28 @@
 
 Cube testingCube(0,0,0);
 
-int width, height;
+int width = 800, height = 600;
 
 void ChangeSize(int w, int h)
 {
     openGL::glViewport(0, 0, w, h);
     width = w;
     height = h;
+    
+    SetMatrix();
 }
 
 void RenderScene()
 {
     openGL::glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     
+    testingCube.Draw();
+    
+    openGL::glutSwapBuffers();
+}
+
+void SetMatrix()
+{
     openGL::glMatrixMode(GL_PROJECTION_MATRIX);
     openGL::glLoadIdentity();
     openGL::gluPerspective(35, width / (float) height, .1f, 50);
@@ -35,16 +44,13 @@ void RenderScene()
                       -1, -1, -1,
                       0, 0, 0,
                       0, 1, 0);
-    
-    testingCube.Draw();
-    
-    openGL::glutSwapBuffers();
 }
 
 void SetupRC()
 {
-    
     openGL::glClearColor(0.01, 0.01, 0.01, 1.0);
+    
+    SetMatrix();
 }
 
 int main (int argc, char * argv[])

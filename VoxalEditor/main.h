@@ -13,6 +13,7 @@
 
 void ChangeSize(int w, int h);
 void RenderScene();
+void SetMatrix();
 void SetupRC();
 
 #endif
