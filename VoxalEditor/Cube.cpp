@@ -79,8 +79,14 @@ void CubeSide::Draw()
     }
 }
 
+Cube::Cube()
+{
+    Drawing = false;
+}
+
 Cube::Cube(int x, int y, int z)
 {
+    Drawing = true;
     topSide = CubeSide(x, y, z, x + 1, y + 1, z, 125, 0, 0); // red
     bottomSide = CubeSide(x + 1, y + 1, z + 1, x, y, z + 1, 0, 125, 0); // green
     frontSide = CubeSide(x, y, z, x, y + 1, z + 1, 0, 0, 125); // blue
@@ -91,6 +97,8 @@ Cube::Cube(int x, int y, int z)
 
 void Cube::Draw()
 {
+    if (!Drawing) return;
+    
     openGL::glBegin(GL_TRIANGLES);
         topSide.Draw();
         bottomSide.Draw();

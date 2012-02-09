@@ -32,6 +32,8 @@ public:
 };
 
 class Cube : Drawable {
+    bool Drawing;
+    
     CubeSide topSide;
     CubeSide bottomSide;
     CubeSide frontSide;
@@ -40,6 +42,7 @@ class Cube : Drawable {
     CubeSide rightSide;
     
 public:
+    Cube();
     Cube(int x, int y, int z);
     
     void Draw();

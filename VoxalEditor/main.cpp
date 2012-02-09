@@ -11,6 +11,8 @@
 
 Cube testingCube(0,0,0);
 
+Cube Cubes[8][8][8];
+
 int width = 800, height = 600;
 
 void ChangeSize(int w, int h)
@@ -26,7 +28,13 @@ void RenderScene()
 {
     openGL::glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     
-    testingCube.Draw();
+    for (int z = 0; z < 8; z++) {
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+                Cubes[x][y][z].Draw();
+            }
+        }
+    }
     
     openGL::glutSwapBuffers();
 }
@@ -41,7 +49,7 @@ void SetMatrix()
     openGL::glMatrixMode(GL_MODELVIEW);
     openGL::glLoadIdentity();
     openGL::gluLookAt(
-                      -3, -3, -3,
+                      -10, -10, -8,
                       0, 0, 0,
                       0, 0, -1);
 }
@@ -51,6 +59,14 @@ void SetupRC()
     openGL::glClearColor(0.01, 0.01, 0.01, 1.0);
     
     openGL::glEnable(GL_DEPTH_TEST);
+    
+    for (int z = 0; z < 8; z++) {
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+                Cubes[x][y][z] = Cube(x - 4, y - 4, z - 4);
+            }
+        }
+    }
     
     SetMatrix();
 }
