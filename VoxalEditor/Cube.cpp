@@ -74,34 +74,35 @@ void CubeSide::Draw()
     }
 }
 
-void CubeSide::DrawVector(std::vector<vector3f> *vec)
+void CubeSide::DrawVector(std::vector<drawCommand> *vec)
 {
-    vec->push_back(CreateVector3f(-R, B, G));
-    vec->push_back(CreateVector3f(Point1.X, Point1.Y, Point1.Z));
+    vec->push_back(CreateDrawCommand(CreateVector3f(R, B, G),1));
+    
+    vec->push_back(CreateDrawCommand(CreateVector3f(Point1.X, Point1.Y, Point1.Z),0));
     
     if (Point1.X == Point2.X)
     {
-        vec->push_back(CreateVector3f(Point1.X, Point2.Y, Point1.Z));
-        vec->push_back(CreateVector3f(Point1.X, Point2.Y, Point2.Z));
-        vec->push_back(CreateVector3f(Point1.X, Point1.Y, Point1.Z));
-        vec->push_back(CreateVector3f(Point1.X, Point1.Y, Point2.Z));
-        vec->push_back(CreateVector3f(Point1.X, Point2.Y, Point2.Z));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point1.X, Point2.Y, Point1.Z),0));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point1.X, Point2.Y, Point2.Z),0));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point1.X, Point1.Y, Point1.Z),0));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point1.X, Point1.Y, Point2.Z),0));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point1.X, Point2.Y, Point2.Z),0));
     }
     else if (Point1.Y == Point2.Y)
     {
-        vec->push_back(CreateVector3f(Point2.X, Point1.Y, Point1.Z));
-        vec->push_back(CreateVector3f(Point2.X, Point1.Y, Point2.Z));
-        vec->push_back(CreateVector3f(Point1.X, Point1.Y, Point1.Z));
-        vec->push_back(CreateVector3f(Point1.X, Point1.Y, Point2.Z));
-        vec->push_back(CreateVector3f(Point2.X, Point1.Y, Point2.Z));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point2.X, Point1.Y, Point1.Z),0));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point2.X, Point1.Y, Point2.Z),0));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point1.X, Point1.Y, Point1.Z),0));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point1.X, Point1.Y, Point2.Z),0));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point2.X, Point1.Y, Point2.Z),0));
     }
     else if (Point1.Z == Point2.Z)
     {
-        vec->push_back(CreateVector3f(Point1.X, Point2.Y, Point1.Z));
-        vec->push_back(CreateVector3f(Point2.X, Point2.Y, Point1.Z));
-        vec->push_back(CreateVector3f(Point1.X, Point1.Y, Point1.Z));
-        vec->push_back(CreateVector3f(Point2.X, Point1.Y, Point1.Z));
-        vec->push_back(CreateVector3f(Point2.X, Point2.Y, Point1.Z));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point1.X, Point2.Y, Point1.Z),0));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point2.X, Point2.Y, Point1.Z),0));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point1.X, Point1.Y, Point1.Z),0));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point2.X, Point1.Y, Point1.Z),0));
+        vec->push_back(CreateDrawCommand(CreateVector3f(Point2.X, Point2.Y, Point1.Z),0));
     }
 }
 
@@ -140,7 +141,7 @@ void Cube::Draw()
     openGL::glEnd();
 }
 
-void Cube::DrawVector(std::vector<vector3f> *vec)
+void Cube::DrawVector(std::vector<drawCommand> *vec)
 {
     if (!Drawing) return;
     

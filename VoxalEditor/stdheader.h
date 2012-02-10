@@ -26,6 +26,22 @@ inline vector3f CreateVector3f(float x, float y, float z)
     return vec;
 }
 
+struct drawCommand
+{
+    vector3f data;
+    int type;
+};
+
+inline drawCommand CreateDrawCommand(vector3f data, int type)
+{
+    drawCommand cmd;
+    
+    cmd.data = data;
+    cmd.type = type;
+    
+    return cmd;
+}
+
 #include <sys/types.h>
 #include <sys/cdefs.h>
 #include <stddef.h>

@@ -19,7 +19,7 @@ int width = 800, height = 600;
 
 bool needsRebuild = true;
 
-std::vector<vector3f> vertexs = std::vector<vector3f>();
+std::vector<drawCommand> vertexs = std::vector<drawCommand>();
 
 void ChangeSize(int w, int h)
 {
@@ -55,15 +55,15 @@ void RenderScene()
     
     openGL::glBegin(GL_TRIANGLES);
     
-    for(std::vector<vector3f>::iterator it = vertexs.begin(); it != vertexs.end(); ++it)
+    for(std::vector<drawCommand>::iterator it = vertexs.begin(); it != vertexs.end(); ++it)
     {
-        if (it->X < 0)
+        if (it->type == 1)
         {
-            openGL::glColor4f(-it->X, it->Y, it->Z, 255);
+            openGL::glColor4f(it->data.X, it->data.Y, it->data.Z, 255);
         }
         else
         {
-            openGL::glVertex3f(it->X, it->Y, it->Z);
+            openGL::glVertex3f(it->data.X, it->data.Y, it->data.Z);
         }
     }
     

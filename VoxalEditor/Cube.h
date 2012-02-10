@@ -26,7 +26,7 @@ public:
     CubeSide(int x1, int y1, int z1, int x2, int y2, int z2, int r, int g, int b);
     
     void Draw();
-    void DrawVector(std::vector<vector3f> *vec);
+    void DrawVector(std::vector<drawCommand> *vec);
     
     bool GetEnabled();
     void SetEnabled(bool s);
@@ -49,7 +49,7 @@ public:
     void SetDrawing(bool s);
     
     void Draw();
-    void DrawVector(std::vector<vector3f> *vec);
+    void DrawVector(std::vector<drawCommand> *vec);
 };
 
 #endif
