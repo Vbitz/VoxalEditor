@@ -59,7 +59,7 @@ void RenderScene()
     {
         if (it->type == 1)
         {
-            openGL::glColor4f(it->data.X, it->data.Y, it->data.Z, 255);
+            openGL::glColor3f(it->data.X, it->data.Y, it->data.Z);
         }
         else
         {

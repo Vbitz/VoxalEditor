@@ -15,7 +15,7 @@
 class CubeSide : Drawable {
     bool Enabled;
     
-    int R, G, B;
+    float R, G, B;
     
     vector3f Point1;
     vector3f Point2;
