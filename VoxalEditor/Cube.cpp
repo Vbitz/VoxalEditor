@@ -43,6 +43,7 @@ void CubeSide::SetEnabled(bool s)
 
 void CubeSide::Draw()
 {
+    if (!Enabled) return;
     
     openGL::glColor4f(R, G, B, 255);
     
@@ -76,6 +77,8 @@ void CubeSide::Draw()
 
 void CubeSide::DrawVector(std::vector<drawCommand> *vec)
 {
+    if (!Enabled) return;
+    
     vec->push_back(CreateDrawCommand(CreateVector3f(R, B, G),1));
     
     vec->push_back(CreateDrawCommand(CreateVector3f(Point1.X, Point1.Y, Point1.Z),0));
@@ -119,12 +122,12 @@ void Cube::SetDrawing(bool s)
 Cube::Cube(int x, int y, int z)
 {
     Drawing = true;
-    topSide = CubeSide(x, y, z, x + 1, y + 1, z, 125, 1, 1); // red
-    bottomSide = CubeSide(x + 1, y + 1, z + 1, x, y, z + 1, 1, 125, 1); // green
-    frontSide = CubeSide(x, y, z, x, y + 1, z + 1, 1, 1, 125); // blue
-    backSide = CubeSide(x + 1, y, z, x + 1, y + 1, z + 1 , 125, 125, 1); // yellow
-    leftSide = CubeSide(x, y, z, x + 1, y, z + 1, 125, 1, 125); // purple
-    rightSide = CubeSide(x, y + 1, z, x + 1, y + 1, z + 1, 1, 125, 125); // cyan
+    topSide = CubeSide(x, y, z, x + 1, y + 1, z, .5, 1, 1.); // red
+    bottomSide = CubeSide(x + 1, y + 1, z + 1, x, y, z + 1, 1., .5, 1.); // green
+    frontSide = CubeSide(x, y, z, x, y + 1, z + 1, 1, 1., .5); // blue
+    backSide = CubeSide(x + 1, y, z, x + 1, y + 1, z + 1 , .5, .5, 1); // yellow
+    leftSide = CubeSide(x, y, z, x + 1, y, z + 1, .5, 1, .5); // purple
+    rightSide = CubeSide(x, y + 1, z, x + 1, y + 1, z + 1, 1, .5, .5); // cyan
 }
 
 void Cube::Draw()

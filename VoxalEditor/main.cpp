@@ -59,6 +59,7 @@ void RenderScene()
     {
         if (it->type == 1)
         {
+            std::cout << it->data.X << " " << it->data.Y << " " << it->data.Z << std::endl;
             openGL::glColor3f(it->data.X, it->data.Y, it->data.Z);
         }
         else
