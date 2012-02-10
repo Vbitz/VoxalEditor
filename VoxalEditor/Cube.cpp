@@ -74,6 +74,37 @@ void CubeSide::Draw()
     }
 }
 
+void CubeSide::DrawVector(std::vector<vector3f> *vec)
+{
+    vec->push_back(CreateVector3f(-R, B, G));
+    vec->push_back(CreateVector3f(Point1.X, Point1.Y, Point1.Z));
+    
+    if (Point1.X == Point2.X)
+    {
+        vec->push_back(CreateVector3f(Point1.X, Point2.Y, Point1.Z));
+        vec->push_back(CreateVector3f(Point1.X, Point2.Y, Point2.Z));
+        vec->push_back(CreateVector3f(Point1.X, Point1.Y, Point1.Z));
+        vec->push_back(CreateVector3f(Point1.X, Point1.Y, Point2.Z));
+        vec->push_back(CreateVector3f(Point1.X, Point2.Y, Point2.Z));
+    }
+    else if (Point1.Y == Point2.Y)
+    {
+        vec->push_back(CreateVector3f(Point2.X, Point1.Y, Point1.Z));
+        vec->push_back(CreateVector3f(Point2.X, Point1.Y, Point2.Z));
+        vec->push_back(CreateVector3f(Point1.X, Point1.Y, Point1.Z));
+        vec->push_back(CreateVector3f(Point1.X, Point1.Y, Point2.Z));
+        vec->push_back(CreateVector3f(Point2.X, Point1.Y, Point2.Z));
+    }
+    else if (Point1.Z == Point2.Z)
+    {
+        vec->push_back(CreateVector3f(Point1.X, Point2.Y, Point1.Z));
+        vec->push_back(CreateVector3f(Point2.X, Point2.Y, Point1.Z));
+        vec->push_back(CreateVector3f(Point1.X, Point1.Y, Point1.Z));
+        vec->push_back(CreateVector3f(Point2.X, Point1.Y, Point1.Z));
+        vec->push_back(CreateVector3f(Point2.X, Point2.Y, Point1.Z));
+    }
+}
+
 Cube::Cube()
 {
     Drawing = false;
@@ -87,12 +118,12 @@ void Cube::SetDrawing(bool s)
 Cube::Cube(int x, int y, int z)
 {
     Drawing = true;
-    topSide = CubeSide(x, y, z, x + 1, y + 1, z, 125, 0, 0); // red
-    bottomSide = CubeSide(x + 1, y + 1, z + 1, x, y, z + 1, 0, 125, 0); // green
-    frontSide = CubeSide(x, y, z, x, y + 1, z + 1, 0, 0, 125); // blue
-    backSide = CubeSide(x + 1, y, z, x + 1, y + 1, z + 1 , 125, 125, 0); // yellow
-    leftSide = CubeSide(x, y, z, x + 1, y, z + 1, 125, 0, 125); // purple
-    rightSide = CubeSide(x, y + 1, z, x + 1, y + 1, z + 1, 0, 125, 125); // cyan
+    topSide = CubeSide(x, y, z, x + 1, y + 1, z, 125, 1, 1); // red
+    bottomSide = CubeSide(x + 1, y + 1, z + 1, x, y, z + 1, 1, 125, 1); // green
+    frontSide = CubeSide(x, y, z, x, y + 1, z + 1, 1, 1, 125); // blue
+    backSide = CubeSide(x + 1, y, z, x + 1, y + 1, z + 1 , 125, 125, 1); // yellow
+    leftSide = CubeSide(x, y, z, x + 1, y, z + 1, 125, 1, 125); // purple
+    rightSide = CubeSide(x, y + 1, z, x + 1, y + 1, z + 1, 1, 125, 125); // cyan
 }
 
 void Cube::Draw()
@@ -107,4 +138,16 @@ void Cube::Draw()
         leftSide.Draw();
         rightSide.Draw();
     openGL::glEnd();
+}
+
+void Cube::DrawVector(std::vector<vector3f> *vec)
+{
+    if (!Drawing) return;
+    
+    topSide.DrawVector(vec);
+    bottomSide.DrawVector(vec);
+    frontSide.DrawVector(vec);
+    backSide.DrawVector(vec);
+    leftSide.DrawVector(vec);
+    rightSide.DrawVector(vec);
 }

@@ -15,6 +15,7 @@ class Drawable {
     
 public:
     virtual void Draw();
+    virtual void DrawVector(std::vector<vector3f> *vec);
 };
 
 #endif

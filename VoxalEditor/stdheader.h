@@ -15,6 +15,17 @@ struct vector3f{
     float Z;
 };
 
+inline vector3f CreateVector3f(float x, float y, float z)
+{
+    vector3f vec;
+    
+    vec.X = x;
+    vec.Y = y;
+    vec.Z = z;
+    
+    return vec;
+}
+
 #include <sys/types.h>
 #include <sys/cdefs.h>
 #include <stddef.h>

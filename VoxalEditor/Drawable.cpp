@@ -12,3 +12,8 @@ void Drawable::Draw()
 {
     
 }
+
+void Drawable::DrawVector(std::vector<vector3f> *vec)
+{
+    
+}

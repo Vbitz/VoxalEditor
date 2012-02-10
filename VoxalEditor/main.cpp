@@ -11,7 +11,7 @@
 
 Cube testingCube(0,0,0);
 
-const int worldSize = 192;
+const int worldSize = 16;
 
 Cube Cubes[worldSize][worldSize][worldSize];
 
@@ -19,7 +19,7 @@ int width = 800, height = 600;
 
 bool needsRebuild = true;
 
-//std::vector<vector3f> 
+std::vector<vector3f> vertexs = std::vector<vector3f>();
 
 void ChangeSize(int w, int h)
 {
@@ -33,6 +33,15 @@ void ChangeSize(int w, int h)
 void RebuildScene()
 {
     needsRebuild = false;
+    
+    for (int z = 0; z < worldSize; z++) {
+        for (int x = 0; x < worldSize; x++) {
+            for (int y = 0; y < worldSize; y++) {
+                Cube cbe = Cubes[x][y][z];
+                cbe.DrawVector(&vertexs);
+            }
+        }
+    }
 }
 
 void RenderScene()
@@ -44,13 +53,21 @@ void RenderScene()
         RebuildScene();
     }
     
-    for (int z = 0; z < worldSize; z++) {
-        for (int x = 0; x < worldSize; x++) {
-            for (int y = 0; y < worldSize; y++) {
-                Cubes[x][y][z].Draw();
-            }
+    openGL::glBegin(GL_TRIANGLES);
+    
+    for(std::vector<vector3f>::iterator it = vertexs.begin(); it != vertexs.end(); ++it)
+    {
+        if (it->X < 0)
+        {
+            openGL::glColor4f(-it->X, it->Y, it->Z, 255);
+        }
+        else
+        {
+            openGL::glVertex3f(it->X, it->Y, it->Z);
         }
     }
+    
+    openGL::glEnd();
     
     openGL::glutSwapBuffers();
 }
@@ -65,7 +82,7 @@ void SetMatrix()
     openGL::glMatrixMode(GL_MODELVIEW);
     openGL::glLoadIdentity();
     openGL::gluLookAt(
-                      -200, -200, -8,
+                      -30, -40, -20,
                       0, 0, 0,
                       0, 0, -1);
 }
@@ -80,7 +97,7 @@ void SetupRC()
         for (int x = 0; x < worldSize; x++) {
             for (int y = 0; y < worldSize; y++) {
                 Cubes[x][y][z] = Cube(x - worldSize / 2, y - worldSize / 2, z - worldSize / 2);
-                if ((rand() % 64) > 0) {
+                if ((rand() % 2) > 0) {
                     Cubes[x][y][z].SetDrawing(false);
                 }
             }
